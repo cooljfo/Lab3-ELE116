@@ -5,6 +5,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import javax.swing.JFrame;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import java.awt.image.*;
 
 
  class  MainInter extends JFrame implements ActionListener{
@@ -15,7 +22,7 @@ import javax.swing.*;
 	 JButton btMoveDown;
 	 JButton btMoveLeft;
 	 JButton btMoveRight;
-	public static JPanel panel;
+	 JPanel panel;
 	 Zoom z;
 	 MainInter(){
 	  setTitle("Image zoom");
@@ -50,39 +57,40 @@ import javax.swing.*;
 	  setVisible(true);
 	  }
 
+	 
 	 public void actionPerformed(ActionEvent e){
-		   if(e.getSource()==btZoomIn)
-		    {
-		    z.zoomIn();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btZoomOut)
-		    {
-		    z.zoomOut();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveUp)
-		    {
-		    z.movedown();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveDown)
-		    {
-		    z.moveup();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveLeft)
-		    {
-		    z.moveleft();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveRight)
-		    {
-		    z.moveright();
-		    z.repaint();
-		    }
-		  } 
+		 Invocateur control = new Invocateur();
+		 Command ZoomIn = new ZoomInCommand(z);
+		 Command ZoomOut = new ZoomOutCommand(z);
+		 Command MoveUp = new MoveUpCommand(z);
+		 Command MoveDown = new MoveDownCommand(z);
+		 Command MoveLeft = new MoveLeftCommand(z);
+		 Command MoveRight = new MoveRightCommand(z);
+	   if(e.getSource()==btZoomIn)
+	    {
+		    control.setCommand(ZoomIn);
+	    }
+	   else if(e.getSource()==btZoomOut)
+	    {
+		   control.setCommand(ZoomOut);
+	    }
+	   else if(e.getSource()==btMoveUp)
+	    {
+		   control.setCommand(MoveUp);
+	    }
+	   else if(e.getSource()==btMoveDown)
+	    {
+		   control.setCommand(MoveDown);
+	    }
+	   else if(e.getSource()==btMoveLeft)
+	    {
+		   control.setCommand(MoveLeft);
+	    }
+	   else if(e.getSource()==btMoveRight)
+	    {
+		   control.setCommand(MoveRight);
+	    }
+	  }
 
 
-
-}
+	}

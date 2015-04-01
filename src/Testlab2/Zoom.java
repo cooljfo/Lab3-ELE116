@@ -26,7 +26,7 @@ class Zoom extends Canvas implements ImageObserver{
 		// http://stackoverflow.com/questions/7211107/how-to-use-filedialog
 		///////////////////////////////////////////////////////////////////
 		Frame yourJFrame = null; //
-		FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.LOAD); // on crée une nouvelle fenêtre pour choisir le fichier
+		FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.LOAD); // on crÃ©e une nouvelle fenÃªtre pour choisir le fichier
 		fd.setDirectory("C:\\");
 		fd.setFile("*.jpg");
 		fd.setVisible(true);
