@@ -15,11 +15,11 @@ import javax.swing.*;
 	 JButton btMoveDown;
 	 JButton btMoveLeft;
 	 JButton btMoveRight;
-	 JPanel panel;
+	public static JPanel panel;
 	 Zoom z;
 	 MainInter(){
-	 setTitle("Image zoom");
-	 z=new Zoom();
+	  setTitle("Image zoom");
+	  z=new Zoom();
 	  
 
 	  btZoomIn=new JButton("+");
@@ -50,39 +50,39 @@ import javax.swing.*;
 	  setVisible(true);
 	  }
 
-	 
 	 public void actionPerformed(ActionEvent e){
-	   if(e.getSource()==btZoomIn)
-	    {
-	    z.zoomIn();
-	    z.repaint();
-	    }
-	   else if(e.getSource()==btZoomOut)
-	    {
-	    z.zoomOut();
-	    z.repaint();
-	    }
-	   else if(e.getSource()==btMoveUp)
-	    {
-	    z.movedown();
-	    z.repaint();
-	    }
-	   else if(e.getSource()==btMoveDown)
-	    {
-	    z.moveup();
-	    z.repaint();
-	    }
-	   else if(e.getSource()==btMoveLeft)
-	    {
-	    z.moveleft();
-	    z.repaint();
-	    }
-	   else if(e.getSource()==btMoveRight)
-	    {
-	    z.moveright();
-	    z.repaint();
-	    }
-	  }
+		   if(e.getSource()==btZoomIn)
+		    {
+		    z.zoomIn();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btZoomOut)
+		    {
+		    z.zoomOut();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveUp)
+		    {
+		    z.movedown();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveDown)
+		    {
+		    z.moveup();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveLeft)
+		    {
+		    z.moveleft();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveRight)
+		    {
+		    z.moveright();
+		    z.repaint();
+		    }
+		  } 
 
 
-	}
+
+}
