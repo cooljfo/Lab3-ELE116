@@ -1,10 +1,15 @@
 package Testlab2;
 
+import java.util.List;
+import java.util.ArrayList;
 public class MoveDownCommand implements Command {
 	Zoom zoom;
-	
+	int i ;
+	private List<Zoom> history = new ArrayList<Zoom>();
 	public MoveDownCommand(Zoom zoom) {
+		this.history.add(this.zoom);
 		this.zoom = zoom;
+		
 	}
 
 	@Override
@@ -16,7 +21,8 @@ public class MoveDownCommand implements Command {
 
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
+		i++;
+		this.zoom = history.get(i);
 		
 	}
 
