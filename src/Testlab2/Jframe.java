@@ -76,8 +76,9 @@ public class Jframe implements ActionListener {
 				
 			BufferedImage originalImage = ImageIO.read(new File(Zoom.pathfile));
 			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
-		//	BufferedImage out = originalImage.getSubimage(Zoom.adjX, Zoom.adjY, Zoom.adjW-2*Zoom.adjX, Zoom.adjH-2*Zoom.adjY);
-			BufferedImage out = originalImage.getSubimage(100, 100, 30, 30);
+			System.out.println(((Zoom.adjX*-1))+" "+((Zoom.adjY*-1))+" "+(Zoom.adjW)+" "+(Zoom.adjH));
+			BufferedImage out = originalImage.getSubimage(Zoom.adjX*-1, Zoom.adjY*-1,Zoom.width-Zoom.adjW,Zoom.height-Zoom.adjH);// Zoom.adjW-2*Zoom.adjX*-1, Zoom.adjH-2*Zoom.adjY*-1);
+		//	BufferedImage out = originalImage.getSubimage(100, 100, 30, 30);
 			
 			ImageIO.write(out, "jpg", new File("F:/Users/Jean-François/Desktop/pipi.jpg"));
 			
