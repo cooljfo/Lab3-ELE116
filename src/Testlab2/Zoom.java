@@ -11,9 +11,9 @@ import java.awt.image.ImageObserver;
 
 class Zoom extends Canvas implements ImageObserver{
 
-	Image img;
-    int iw;
-    int ih;
+ Image img;
+ int iw;
+ int ih;
  int x;
  int y;
  int adjX=0;
@@ -102,8 +102,15 @@ public void movedown(){
 
 	  }
 	 }
-
-
+public void SetXYWH(Coordonne coordonne){
+	adjY = coordonne.adjY;
+	adjX = coordonne.adjX;
+	adjH = coordonne.adjH;
+	adjW = coordonne.adjW;
+}
+public Coordonne getCoord(){
+	return new Coordonne(this);
+}
 
 
 }

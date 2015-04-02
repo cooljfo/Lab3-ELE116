@@ -10,8 +10,15 @@ public class Invocateur {
 	       this.command = command;
 	       this.command.execute();
 	   }
-	    
+	  public void setUndo(Command command){
+		  this.command = command;
+		  this.command.undo();
+	  }
 	   
-	
+	  public void setRedo(Command command){
+		  this.command = command;
+		  this.command.redo();
+	  }
+	   
 	    
 }

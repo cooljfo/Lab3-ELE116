@@ -3,12 +3,11 @@ package Testlab2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.image.ImageObserver;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
+import Testlab2.MainInter;
 public class Jframe implements ActionListener {
 
 	Jframe() {
@@ -63,12 +62,15 @@ public class Jframe implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("Undo")) {
-			System.out.println("Undo");
+			   MainInter.control.setCommand(MainInter.Redo);
+			   MainInter.control.setUndo(MainInter.Undo);
+			
 
 		}
 
 		else if (e.getActionCommand().equals("Redo")) {
-			System.out.println("Redo");
+			 MainInter.control.setCommand( MainInter.Undo);
+			 MainInter.control.setRedo( MainInter.Redo);
 		}
 
 
