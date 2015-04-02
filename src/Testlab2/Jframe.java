@@ -3,22 +3,34 @@ package Testlab2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.image.ImageObserver;
 
+import javax.imageio.ImageIO;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+
+import Testlab2.MainInter;
 
 public class Jframe implements ActionListener {
-
+	
 	Jframe() {
 		
 		JMenuBar menuBar = new JMenuBar(); // création de la barre de menu
@@ -57,6 +69,7 @@ public class Jframe implements ActionListener {
 		MainInter i = new MainInter();
 		  i.setJMenuBar(menuBar);
 		  i.setSize(Zoom.width+15,Zoom.height+100);
+		  
 	}
 	
 	@Override
@@ -64,13 +77,11 @@ public class Jframe implements ActionListener {
 		if (e.getActionCommand().equals("Open")) {
 			System.out.println("Open");
 		//	MainInter.z=new Zoom();
-			
 
 		}
 
 		else if (e.getActionCommand().equals("Save")) {
 			System.out.println("Save");
-
 			
 			try{
 				
@@ -88,12 +99,15 @@ public class Jframe implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("Undo")) {
-			System.out.println("Undo");
+			   MainInter.control.setCommand(MainInter.Redo);
+			   MainInter.control.setUndo(MainInter.Undo);
+			
 
 		}
 
 		else if (e.getActionCommand().equals("Redo")) {
-			System.out.println("Redo");
+			 MainInter.control.setCommand( MainInter.Undo);
+			 MainInter.control.setRedo( MainInter.Redo);
 		}
 
 

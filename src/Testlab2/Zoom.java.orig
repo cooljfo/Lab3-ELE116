@@ -18,10 +18,16 @@ import javax.imageio.ImageIO;
 
 class Zoom extends Canvas implements ImageObserver{
 
+<<<<<<< HEAD
 public static String pathfile;
 public static	Image img;
 public static    int iw;
  public static    int ih;
+=======
+ Image img;
+ int iw;
+ int ih;
+>>>>>>> cacamic2
  int x;
  int y;
  public static int adjX=0;
@@ -46,16 +52,17 @@ public static    int iw;
 			System.out.println(width+height	);
 		}
 
-  
  }
  
  
  public void paint(Graphics g){
+
  Graphics2D g2d=(Graphics2D)g;
   setImageBounds();
   g2d.translate(x,y);
   g2d.drawImage(img,0,0,iw,ih,this);
   
+
     
    }
  
@@ -63,7 +70,7 @@ public static    int iw;
 		// http://stackoverflow.com/questions/7211107/how-to-use-filedialog
 		///////////////////////////////////////////////////////////////////
 		Frame yourJFrame = null; //
-		FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.LOAD); // on crÃ©e une nouvelle fenÃªtre pour choisir le fichier
+		FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.LOAD); // on crée une nouvelle fenêtre pour choisir le fichier
 		fd.setDirectory("C:\\");
 		fd.setFile("*.jpg");
 		fd.setVisible(true);
