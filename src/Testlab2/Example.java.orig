@@ -5,6 +5,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import javax.swing.JFrame;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import java.awt.image.*;
 
 
  class  MainInter extends JFrame implements ActionListener{
@@ -18,12 +25,6 @@ import javax.swing.*;
 	 JButton btMoveLeft;
 	 JButton btMoveRight;
 <<<<<<< HEAD
-	public static JPanel panel;
-
-	 static Zoom z=new Zoom();
-	 MainInter(){
-	  setTitle("Image zoom");
-=======
 	 JPanel panel;
 	 static Zoom z = new Zoom();
 	 static Invocateur control = new Invocateur();
@@ -36,10 +37,14 @@ import javax.swing.*;
 	 static Command Undo = new UndoCommand(z);
 	 static Command Redo = new RedoClass(z);
 	 static Coordonne c = new Coordonne(z);
+=======
+	public static JPanel panel;
+
+	 Zoom z=new Zoom();
+>>>>>>> suitejf
 	 MainInter(){
 	  setTitle("Image zoom");
 
->>>>>>> cacamic2
 	  
 	  
 
@@ -62,7 +67,7 @@ import javax.swing.*;
 	  redo.addActionListener(this);
 	  add(z,BorderLayout.CENTER );
 	  panel=new JPanel();
-	  panel.setSize(200,200);
+
 	  panel.setLayout(new FlowLayout());
 	  panel.add(btZoomIn);
 	  panel.add(caca);
@@ -78,41 +83,8 @@ import javax.swing.*;
 	  setVisible(true);
 	  }
 
+	 
 	 public void actionPerformed(ActionEvent e){
-<<<<<<< HEAD
-		   if(e.getSource()==btZoomIn)
-		    {
-		    z.zoomIn();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btZoomOut)
-		    {
-		    z.zoomOut();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveUp)
-		    {
-		    z.movedown();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveDown)
-		    {
-		    z.moveup();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveLeft)
-		    {
-		    z.moveleft();
-		    z.repaint();
-		    }
-		   else if(e.getSource()==btMoveRight)
-		    {
-		    z.moveright();
-		    z.repaint();
-		    }
-		  } 
-
-=======
 		
 	   if(e.getSource()==btZoomIn)
 	    {
@@ -159,7 +131,6 @@ import javax.swing.*;
 		   
 	    }
 	  }
->>>>>>> cacamic2
 
 
-}
+	}

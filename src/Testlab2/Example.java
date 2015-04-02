@@ -38,7 +38,6 @@ import java.awt.image.*;
 	 static Coordonne c = new Coordonne(z);
 	 MainInter(){
 	  setTitle("Image zoom");
-
 	  
 	  
 
@@ -77,7 +76,6 @@ import java.awt.image.*;
 	  setVisible(true);
 	  }
 
-	 
 	 public void actionPerformed(ActionEvent e){
 		
 	   if(e.getSource()==btZoomIn)
@@ -127,4 +125,4 @@ import java.awt.image.*;
 	  }
 
 
-	}
+}

@@ -3,6 +3,7 @@ package Testlab2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.ImageObserver;
 
 import javax.imageio.ImageIO;
 import javax.swing.JMenu;
@@ -22,6 +23,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -68,8 +70,7 @@ public class Jframe implements ActionListener {
 		
 		MainInter i = new MainInter();
 		  i.setJMenuBar(menuBar);
-		  i.setSize(Zoom.width+15,Zoom.height+100);
-		  
+		  i.setSize(Zoom.width+16,Zoom.height+98);
 	}
 	
 	@Override
@@ -77,11 +78,13 @@ public class Jframe implements ActionListener {
 		if (e.getActionCommand().equals("Open")) {
 			System.out.println("Open");
 		//	MainInter.z=new Zoom();
+			
 
 		}
 
 		else if (e.getActionCommand().equals("Save")) {
 			System.out.println("Save");
+
 			
 			try{
 				
