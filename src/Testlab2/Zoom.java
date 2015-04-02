@@ -16,6 +16,7 @@ import java.io.IOException;
 
 
 
+
 import javax.imageio.ImageIO;
 
 class Zoom extends Canvas implements ImageObserver{
@@ -60,10 +61,14 @@ public static    int iw;
 
 	 Graphics2D g2d=(Graphics2D)g;
 	 setImageBounds();
-  //bi= bi.getSubimage(adjX*-1, adjY*-1,iw,ih);
-  System.out.println(((adjX*-1))+" "+((adjY*-1))+" "+(width-adjW)+" "+(height-adjH));
-  g2d.translate(x,y);
-  g2d.drawImage(bi,70,70,width,height,null);
+	 System.out.println(((adjX*-1))+" "+((adjY*-1))+" "+iw+" "+ih);
+	 BufferedImage bibackup = bi.getSubimage(Zoom.adjX*-1, Zoom.adjY*-1,Zoom.width-Zoom.adjW,Zoom.height-Zoom.adjH);
+//	 BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,iw,ih);
+	 System.out.println("allo");
+
+  //g2d.translate(x,y);
+  g2d.drawImage(bibackup,0,0,500,500,null);
+	System.out.println(width+" "+height	);
   
 
     
@@ -90,8 +95,8 @@ public String setPathFile(){
   
   x=adjX;
   y=adjY;
-  iw=bi.getWidth(this)+adjW;
-  ih=bi.getHeight(this)+adjH; 
+  iw=width+adjW;
+  ih=height+adjH; 
   
  }
 
