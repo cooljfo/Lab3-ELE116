@@ -56,7 +56,7 @@ public class Jframe implements ActionListener {
 		
 		MainInter i = new MainInter();
 		  i.setJMenuBar(menuBar);
-		  i.setSize(Zoom.width+15,Zoom.height+100);
+		  i.setSize(Zoom.width+16,Zoom.height+98);
 	}
 	
 	@Override

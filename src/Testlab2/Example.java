@@ -17,7 +17,7 @@ import javax.swing.*;
 	 JButton btMoveRight;
 	public static JPanel panel;
 
-	 static Zoom z=new Zoom();
+	 Zoom z=new Zoom();
 	 MainInter(){
 	  setTitle("Image zoom");
 	  
