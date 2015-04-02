@@ -9,6 +9,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 public class Jframe implements ActionListener {
 
 	Jframe() {
@@ -48,6 +56,7 @@ public class Jframe implements ActionListener {
 		
 		MainInter i = new MainInter();
 		  i.setJMenuBar(menuBar);
+		  i.setSize(Zoom.width+15,Zoom.height+100);
 	}
 	
 	@Override
@@ -55,11 +64,26 @@ public class Jframe implements ActionListener {
 		if (e.getActionCommand().equals("Open")) {
 			System.out.println("Open");
 		//	MainInter.z=new Zoom();
+			
 
 		}
 
 		else if (e.getActionCommand().equals("Save")) {
 			System.out.println("Save");
+
+			
+			try{
+				
+			BufferedImage originalImage = ImageIO.read(new File(Zoom.pathfile));
+			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+		//	BufferedImage out = originalImage.getSubimage(Zoom.adjX, Zoom.adjY, Zoom.adjW-2*Zoom.adjX, Zoom.adjH-2*Zoom.adjY);
+			BufferedImage out = originalImage.getSubimage(100, 100, 30, 30);
+			
+			ImageIO.write(out, "jpg", new File("F:/Users/Jean-François/Desktop/pipi.jpg"));
+			
+			}catch(IOException f){
+				System.out.println("caca");
+			}
 		}
 		
 		if (e.getActionCommand().equals("Undo")) {

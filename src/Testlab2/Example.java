@@ -5,13 +5,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import javax.swing.JFrame;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-
-import java.awt.image.*;
 
 
  class  MainInter extends JFrame implements ActionListener{
@@ -22,11 +15,12 @@ import java.awt.image.*;
 	 JButton btMoveDown;
 	 JButton btMoveLeft;
 	 JButton btMoveRight;
-	 JPanel panel;
-	 Zoom z;
+	public static JPanel panel;
+
+	 static Zoom z=new Zoom();
 	 MainInter(){
 	  setTitle("Image zoom");
-	  z=new Zoom();
+	  
 	  
 
 	  btZoomIn=new JButton("+");
@@ -44,6 +38,7 @@ import java.awt.image.*;
 	  btZoomOut.setOpaque(false);
 	  add(z,BorderLayout.CENTER );
 	  panel=new JPanel();
+	  panel.setSize(200,200);
 	  panel.setLayout(new FlowLayout());
 	  panel.add(btZoomIn);
 	  panel.add(btZoomOut);
@@ -57,40 +52,39 @@ import java.awt.image.*;
 	  setVisible(true);
 	  }
 
-	 
 	 public void actionPerformed(ActionEvent e){
-		 Invocateur control = new Invocateur();
-		 Command ZoomIn = new ZoomInCommand(z);
-		 Command ZoomOut = new ZoomOutCommand(z);
-		 Command MoveUp = new MoveUpCommand(z);
-		 Command MoveDown = new MoveDownCommand(z);
-		 Command MoveLeft = new MoveLeftCommand(z);
-		 Command MoveRight = new MoveRightCommand(z);
-	   if(e.getSource()==btZoomIn)
-	    {
-		    control.setCommand(ZoomIn);
-	    }
-	   else if(e.getSource()==btZoomOut)
-	    {
-		   control.setCommand(ZoomOut);
-	    }
-	   else if(e.getSource()==btMoveUp)
-	    {
-		   control.setCommand(MoveUp);
-	    }
-	   else if(e.getSource()==btMoveDown)
-	    {
-		   control.setCommand(MoveDown);
-	    }
-	   else if(e.getSource()==btMoveLeft)
-	    {
-		   control.setCommand(MoveLeft);
-	    }
-	   else if(e.getSource()==btMoveRight)
-	    {
-		   control.setCommand(MoveRight);
-	    }
-	  }
+		   if(e.getSource()==btZoomIn)
+		    {
+		    z.zoomIn();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btZoomOut)
+		    {
+		    z.zoomOut();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveUp)
+		    {
+		    z.movedown();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveDown)
+		    {
+		    z.moveup();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveLeft)
+		    {
+		    z.moveleft();
+		    z.repaint();
+		    }
+		   else if(e.getSource()==btMoveRight)
+		    {
+		    z.moveright();
+		    z.repaint();
+		    }
+		  } 
 
 
-	}
+
+}
