@@ -35,6 +35,7 @@ import Testlab2.MainInter;
 public class Jframe implements ActionListener {
 	MainInter i = new MainInter();
 	
+
 	Jframe() {
 		
 		JMenuBar menuBar = new JMenuBar(); // création de la barre de menu
@@ -72,7 +73,7 @@ public class Jframe implements ActionListener {
 		
 
 		  i.setJMenuBar(menuBar);
-		  i.setSize(i.z.width+16,i.z.height+98);
+		  i.setSize(500,500);	
 	}
 	
 	@Override
@@ -80,7 +81,8 @@ public class Jframe implements ActionListener {
 		if (e.getActionCommand().equals("Open")) {
 			System.out.println("Open");
 		//	MainInter.z=new Zoom();
-			
+			i.z.fileChooser();
+			i.setSize(i.z.width+16,i.z.height+98);			
 
 		}
 

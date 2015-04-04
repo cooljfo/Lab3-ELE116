@@ -31,11 +31,16 @@ class Zoom extends Canvas implements ImageObserver{
 	public static Dimension ds;
 	public int width;
 	public int height;
+	private Boolean imageCreated = false;
 
 	BufferedImage bi;
 	//int first=0;
+	
 
 	Zoom(){
+
+	}
+	public void fileChooser(){
 
 		//		img=getToolkit().getImage(setPathFile());
 		ds=getToolkit().getScreenSize();
@@ -46,28 +51,26 @@ class Zoom extends Canvas implements ImageObserver{
 
 			width=bi.getWidth();
 			height=bi.getHeight();
+			imageCreated=true;
 			System.out.println(width+" "+height	);
 		}catch(IOException f){
 			System.out.println(width+height	);
 		}
-
+	
+		
 	}
 
-
 	public void paint(Graphics g){
-
+		if (imageCreated){
 		Graphics2D g2d=(Graphics2D)g;
-		setImageBounds();
-		//	 System.out.println(((adjX*-1))+" "+((adjY*-1))+" "+iw+" "+ih);
+
 		BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,width-adjW,height-adjH);
-		//	 BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,iw,ih);
-		//	 System.out.println("allo");
+
 		iw=bibackup.getWidth();
 		ih=bibackup.getHeight();
-		//g2d.translate(x,y);
-		g2d.drawImage(bibackup,0,0,width,height,null);
-		//	System.out.println(width+" "+height	);
 
+		g2d.drawImage(bibackup,0,0,width,height,null);
+		}
 
 
 	}
@@ -89,14 +92,7 @@ class Zoom extends Canvas implements ImageObserver{
 		return pathfile;
 	}
 
-	public void setImageBounds(){
 
-		// x=adjX;
-		// y=adjY;
-		// iw=width+adjW;
-		// ih=height+adjH; 
-
-	}
 
 	public void zoomIn(){
 		adjX-=10;
