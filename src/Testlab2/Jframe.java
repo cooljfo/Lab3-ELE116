@@ -3,7 +3,7 @@ package Testlab2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.image.ImageObserver;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.JMenu;
@@ -11,25 +11,17 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.MediaTracker;
+
+import java.awt.FileDialog;
+import java.awt.Frame;
+
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
+
 
 import Testlab2.MainInter;
 
@@ -118,9 +110,17 @@ public class Jframe implements ActionListener {
 			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
 			System.out.println(((i.z.adjX*-1))+" "+((i.z.adjY*-1))+" "+(i.z.adjW)+" "+(i.z.adjH));
 			BufferedImage out = originalImage.getSubimage(i.z.adjX*-1, i.z.adjY*-1,i.z.width-i.z.adjW,i.z.height-i.z.adjH);// i.z.adjW-2*i.z.adjX*-1, i.z.adjH-2*i.z.adjY*-1);
-		//	BufferedImage out = originalImage.getSubimage(100, 100, 30, 30);
+
+			Frame yourJFrame = null; //
+			FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.SAVE); // on crée une nouvelle fenêtre pour choisir le fichier
+			fd.setDirectory("C:\\");
+			fd.setFile("*.jpg");
+			fd.setVisible(true);
+			String pathfile = fd.getDirectory() + fd.getFile();
+
+
 			
-			ImageIO.write(out, "jpg", new File("F:/Users/Jean-François/Desktop/pipi.jpg"));
+			ImageIO.write(out, "jpg", new File(pathfile));
 			
 			}catch(IOException f){
 				System.out.println("caca");

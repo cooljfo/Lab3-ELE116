@@ -1,8 +1,6 @@
 package Testlab2;
 
-import java.awt.Dimension;
-import java.util.List;
-import java.util.ArrayList;
+
 public class MoveDownCommand implements Command {
 	Zoom zoom;
 
