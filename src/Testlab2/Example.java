@@ -17,7 +17,7 @@ import java.awt.image.*;
  class  MainInter extends JFrame implements ActionListener{
 	 
 	 JButton btZoomIn;
-	 JButton caca;
+	 JButton undo;
 	 JButton redo;
 	 JButton btZoomOut;
 	 JButton btMoveUp;
@@ -25,7 +25,7 @@ import java.awt.image.*;
 	 JButton btMoveLeft;
 	 JButton btMoveRight;
 	 JPanel panel;
-	 static Zoom z = new Zoom();
+	 public Zoom z = new Zoom();
 	 static Invocateur control = new Invocateur();
 	 Command ZoomIn = new ZoomInCommand(z);
 	 Command ZoomOut = new ZoomOutCommand(z);
@@ -33,9 +33,9 @@ import java.awt.image.*;
 	 Command MoveDown = new MoveDownCommand(z);
 	 Command MoveLeft = new MoveLeftCommand(z);
 	 Command MoveRight = new MoveRightCommand(z);
-	 static Command Undo = new UndoCommand(z);
-	 static Command Redo = new RedoClass(z);
-	 static Coordonne c = new Coordonne(z);
+	 Command Undo = new UndoCommand(z);
+	 Command Redo = new RedoClass(z);
+	 Coordonne c = new Coordonne(z);
 	 MainInter(){
 	  setTitle("Image zoom");
 	  
@@ -54,8 +54,8 @@ import java.awt.image.*;
 	  btMoveRight=new JButton(">");
 	  btMoveRight.addActionListener(this);
 	  btZoomOut.setOpaque(false);
-	  caca=new JButton("CACA");
-	  caca.addActionListener(this);
+	  undo=new JButton("undo");
+	  undo.addActionListener(this);
 	  redo=new JButton("redo");
 	  redo.addActionListener(this);
 	  add(z,BorderLayout.CENTER );
@@ -63,7 +63,7 @@ import java.awt.image.*;
 
 	  panel.setLayout(new FlowLayout());
 	  panel.add(btZoomIn);
-	  panel.add(caca);
+	  panel.add(undo);
 	  panel.add(redo);
 	  panel.add(btZoomOut);
 	  panel.add(btMoveUp);
@@ -108,7 +108,7 @@ import java.awt.image.*;
 		   control.setCommand(Undo);
 		   control.setCommand(MoveRight);
 	    }
-	   else if(e.getSource()==caca)
+	   else if(e.getSource()==undo)
 	    {
 		   control.setCommand(Redo);
 		   control.setUndo(Undo);

@@ -31,7 +31,9 @@ import javax.swing.border.TitledBorder;
 
 import Testlab2.MainInter;
 
+
 public class Jframe implements ActionListener {
+	MainInter i = new MainInter();
 	
 	Jframe() {
 		
@@ -68,9 +70,9 @@ public class Jframe implements ActionListener {
 		editMenu.add(redoMenuItem);
 
 		
-		MainInter i = new MainInter();
+
 		  i.setJMenuBar(menuBar);
-		  i.setSize(Zoom.width+16,Zoom.height+98);
+		  i.setSize(i.z.width+16,i.z.height+98);
 	}
 	
 	@Override
@@ -88,10 +90,10 @@ public class Jframe implements ActionListener {
 			
 			try{
 				
-			BufferedImage originalImage = ImageIO.read(new File(Zoom.pathfile));
+			BufferedImage originalImage = ImageIO.read(new File(i.z.pathfile));
 			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
-			System.out.println(((Zoom.adjX*-1))+" "+((Zoom.adjY*-1))+" "+(Zoom.adjW)+" "+(Zoom.adjH));
-			BufferedImage out = originalImage.getSubimage(Zoom.adjX*-1, Zoom.adjY*-1,Zoom.width-Zoom.adjW,Zoom.height-Zoom.adjH);// Zoom.adjW-2*Zoom.adjX*-1, Zoom.adjH-2*Zoom.adjY*-1);
+			System.out.println(((i.z.adjX*-1))+" "+((i.z.adjY*-1))+" "+(i.z.adjW)+" "+(i.z.adjH));
+			BufferedImage out = originalImage.getSubimage(i.z.adjX*-1, i.z.adjY*-1,i.z.width-i.z.adjW,i.z.height-i.z.adjH);// i.z.adjW-2*i.z.adjX*-1, i.z.adjH-2*i.z.adjY*-1);
 		//	BufferedImage out = originalImage.getSubimage(100, 100, 30, 30);
 			
 			ImageIO.write(out, "jpg", new File("F:/Users/Jean-François/Desktop/pipi.jpg"));
@@ -102,15 +104,15 @@ public class Jframe implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("Undo")) {
-			   MainInter.control.setCommand(MainInter.Redo);
-			   MainInter.control.setUndo(MainInter.Undo);
+			   MainInter.control.setCommand(i.Redo);
+			   MainInter.control.setUndo(i.Undo);
 			
 
 		}
 
 		else if (e.getActionCommand().equals("Redo")) {
-			 MainInter.control.setCommand( MainInter.Undo);
-			 MainInter.control.setRedo( MainInter.Redo);
+			 MainInter.control.setCommand( i.Undo);
+			 MainInter.control.setRedo(i.Redo);
 		}
 
 

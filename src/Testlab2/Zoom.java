@@ -18,63 +18,64 @@ import javax.imageio.ImageIO;
 
 class Zoom extends Canvas implements ImageObserver{
 
-public static String pathfile;
-public static	Image img;
-public static    int iw;
- public static    int ih;
- int x;
- int y;
- public static int adjX=0;
- public static int adjY=0;
- public static int adjW=0;
- public static int adjH=0;
- public static Dimension ds;
- public static int width;
- public static int height;
- 
- BufferedImage bi;
- //int first=0;
- 
- Zoom(){
+	public static String pathfile;
+	public static	Image img;
+	public static    int iw;
+	public static    int ih;
+	int x;
+	int y;
+	public static int adjX=0;
+	public static int adjY=0;
+	public static int adjW=0;
+	public static int adjH=0;
+	public static Dimension ds;
+	public int width;
+	public int height;
 
-//		img=getToolkit().getImage(setPathFile());
+	BufferedImage bi;
+	//int first=0;
+
+	Zoom(){
+
+		//		img=getToolkit().getImage(setPathFile());
 		ds=getToolkit().getScreenSize();
 		try{
-		bi = ImageIO.read(new File(setPathFile()));
-		int type = bi.getType() == 0? BufferedImage.TYPE_INT_ARGB : bi.getType();
-	//	System.out.println(((Zoom.adjX*-1))+" "+((Zoom.adjY*-1))+" "+(Zoom.adjW)+" "+(Zoom.adjH));
-		
-        width=bi.getWidth();
-        height=bi.getHeight();
-		System.out.println(width+" "+height	);
+			bi = ImageIO.read(new File(setPathFile()));
+			int type = bi.getType() == 0? BufferedImage.TYPE_INT_ARGB : bi.getType();
+			//	System.out.println(((Zoom.adjX*-1))+" "+((Zoom.adjY*-1))+" "+(Zoom.adjW)+" "+(Zoom.adjH));
+
+			width=bi.getWidth();
+			height=bi.getHeight();
+			System.out.println(width+" "+height	);
 		}catch(IOException f){
 			System.out.println(width+height	);
 		}
 
- }
- 
- 
- public void paint(Graphics g){
+	}
 
-	 Graphics2D g2d=(Graphics2D)g;
-	 setImageBounds();
-	 System.out.println(((adjX*-1))+" "+((adjY*-1))+" "+iw+" "+ih);
-	 BufferedImage bibackup = bi.getSubimage(Zoom.adjX*-1, Zoom.adjY*-1,Zoom.width-Zoom.adjW,Zoom.height-Zoom.adjH);
-//	 BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,iw,ih);
-	 System.out.println("allo");
 
-  //g2d.translate(x,y);
-  g2d.drawImage(bibackup,0,0,500,500,null);
-	System.out.println(width+" "+height	);
-  
+	public void paint(Graphics g){
 
-    
-   }
- 
+		Graphics2D g2d=(Graphics2D)g;
+		setImageBounds();
+		//	 System.out.println(((adjX*-1))+" "+((adjY*-1))+" "+iw+" "+ih);
+		BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,width-adjW,height-adjH);
+		//	 BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,iw,ih);
+		//	 System.out.println("allo");
+		iw=bibackup.getWidth();
+		ih=bibackup.getHeight();
+		//g2d.translate(x,y);
+		g2d.drawImage(bibackup,0,0,width,height,null);
+		//	System.out.println(width+" "+height	);
 
 
 
-public String setPathFile(){
+	}
+
+
+
+
+	public String setPathFile(){
 		// http://stackoverflow.com/questions/7211107/how-to-use-filedialog
 		///////////////////////////////////////////////////////////////////
 		Frame yourJFrame = null; //
@@ -86,70 +87,93 @@ public String setPathFile(){
 		///////////////////////////////////////////////////////////////////
 		this.pathfile=pathfile;
 		return pathfile;
- }
+	}
 
- public void setImageBounds(){
-  
-  x=adjX;
-  y=adjY;
-  iw=width+adjW;
-  ih=height+adjH; 
-  
- }
+	public void setImageBounds(){
 
- public void zoomIn(){
-  adjX-=10;
-  adjY-=10;
-  adjW+=20;
-  adjH+=20;
- }
+		// x=adjX;
+		// y=adjY;
+		// iw=width+adjW;
+		// ih=height+adjH; 
 
- public void zoomOut(){
-  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
-   adjX+=10;
-   adjY+=10;
-   adjW-=20;
-   adjH-=20;
-  }
- }
- 
- public void moveleft(){
-	//  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
-	   adjX+=10;
+	}
 
-	//  }
-	 }
- public void moveright(){
-	//  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
-	   adjX-=10;
+	public void zoomIn(){
+		adjX-=10;
+		adjY-=10;
+		adjW+=20;
+		adjH+=20;
+	}
 
-	//  }
-	 }
+	public void zoomOut(){
+		//	 System.out.println(width-(adjW)+adjX+" < "+width);
+		//	 if((0 < adjX*-1 ) || (width-(adjW)+adjX)<width){
+		if((iw-adjX < width )||(ih-adjY < height )){
+			System.out.println("allo");
+			if((0 > adjX) )
+				adjX+=10;
+			if(0 > adjY)
+				adjY+=10;
+			if(iw-adjX+10 < width ){
+				System.out.println("caca" +(iw-adjX+20)+" <="+ width );
+				adjW-=20;
+			}
+			else 
+				adjW-=10;	 
+			if(ih-adjY+10 < height ){
+				System.out.println("pipi" +(ih-adjY+20)+" <="+height );
+				adjH-=20;
+			}
+			else 
+				adjH-=10;
+		}
+		// }
+	}
 
-public void moveup(){
-	//  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
+	public void moveleft(){
+		//  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
+		if((0 > adjX))
+			adjX+=10;
 
-	   adjY-=10;
+		//  }
+	}
+	public void moveright(){
 
-	//  }
-	 }
+		if((iw-adjX < width ))
+			adjX-=10;
 
-public void movedown(){
-	//  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
+		//  }
+	}
 
-	   adjY+=10;
+	public void moveup(){
+		//  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
+		System.out.println(adjY+" < "+height);
 
-	//  }
-	 }
-public void SetXYWH(Coordonne coordonne){
-	adjY = coordonne.adjY;
-	adjX = coordonne.adjX;
-	adjH = coordonne.adjH;
-	adjW = coordonne.adjW;
-}
-public Coordonne getCoord(){
-	return new Coordonne(this);
-}
+		if((0 > adjY))
+
+			adjY+=10;
+
+
+		//  }
+	}
+
+	public void movedown(){
+
+		// if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
+		System.out.println((ih+adjY)+" < "+height);
+		if((ih-adjY < height ))
+			adjY-=10;
+		//  }
+	}
+	public void SetXYWH(Coordonne coordonne){
+		adjY = coordonne.adjY;
+		adjX = coordonne.adjX;
+		adjH = coordonne.adjH;
+		adjW = coordonne.adjW;
+	}
+	public Coordonne getCoord(){
+		return new Coordonne(this);
+	}
 
 
 }
