@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -16,6 +17,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MediaTracker;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.WindowAdapter;
@@ -23,8 +25,8 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -45,14 +47,26 @@ public class Jframe implements ActionListener {
 		menuBar.add(fileMenu);
 		
 		// File->New, N - Mnemonic
-		JMenuItem openMenuItem = new JMenuItem("Open", KeyEvent.VK_N); //création du bouton livre
+		JMenuItem openMenuItem = new JMenuItem("Open"); //création du bouton livre
+		//set shortcut CTRL+H (command+h on mac os)
+        KeyStroke ctrlO = KeyStroke.getKeyStroke(KeyEvent.VK_O, Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask());
+
+        //set the accelerator
+        openMenuItem.setAccelerator(ctrlO);
+        
 		openMenuItem.addActionListener(this);
 		fileMenu.add(openMenuItem);
 		
 		// File->New, N - Mnemonic
-		JMenuItem saveMenuItem = new JMenuItem("Save", KeyEvent.VK_N); //création du bouton livre
+		JMenuItem saveMenuItem = new JMenuItem("Save"); //création du bouton livre
+		KeyStroke ctrlS = KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask());
+
+        //set the accelerator
+		saveMenuItem.setAccelerator(ctrlS);
 		saveMenuItem.addActionListener(this);
 		fileMenu.add(saveMenuItem);
+		
+		
 
 		
 		// File Menu, F - Mnemonic
@@ -61,12 +75,20 @@ public class Jframe implements ActionListener {
 		menuBar.add(editMenu);
 		
 		// File->New, N - Mnemonic
-		JMenuItem undoMenuItem = new JMenuItem("Undo", KeyEvent.VK_N); //création du bouton livre
+		JMenuItem undoMenuItem = new JMenuItem("Undo"); //création du bouton livre
+		KeyStroke ctrlZ = KeyStroke.getKeyStroke(KeyEvent.VK_Z, Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask());
+
+        //set the accelerator
+		undoMenuItem.setAccelerator(ctrlZ);
 		undoMenuItem.addActionListener(this);
 		editMenu.add(undoMenuItem);
 		
 		// File->New, N - Mnemonic
-		JMenuItem redoMenuItem = new JMenuItem("Redo", KeyEvent.VK_N); //création du bouton livre
+		JMenuItem redoMenuItem = new JMenuItem("Redo"); //création du bouton livre
+		KeyStroke ctrlY = KeyStroke.getKeyStroke(KeyEvent.VK_Y, Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask());
+
+        //set the accelerator
+		redoMenuItem.setAccelerator(ctrlY);
 		redoMenuItem.addActionListener(this);
 		editMenu.add(redoMenuItem);
 
