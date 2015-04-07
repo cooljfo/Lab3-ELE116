@@ -124,7 +124,7 @@ public class Jframe implements ActionListener {
 			fd.setVisible(true);
 			String pathfile = fd.getDirectory() + fd.getFile();
 
-
+ 
 			
 			ImageIO.write(out, "jpg", new File(pathfile));
 			
