@@ -102,26 +102,27 @@ class Zoom extends Canvas implements ImageObserver{
 	public void zoomOut(){
 		//	 System.out.println(width-(adjW)+adjX+" < "+width);
 		//	 if((0 < adjX*-1 ) || (width-(adjW)+adjX)<width){
-		if((iw-adjX < width )||(ih-adjY < height )){
+		if((iw-adjX < width )||(ih-adjY < height ||(0 > adjX)||(0 > adjY))){
 			System.out.println("allo");
 			if((0 > adjX) )
 				adjX+=10;
 			if(0 > adjY)
 				adjY+=10;
 			if(iw-adjX+10 < width ){
-				System.out.println("caca" +(iw-adjX+20)+" <="+ width );
 				adjW-=20;
 			}
-			else 
-				adjW-=10;	 
+			else{ 
+				adjW-=20;
+				adjX+=10;
+			}
 			if(ih-adjY+10 < height ){
-				System.out.println("pipi" +(ih-adjY+20)+" <="+height );
 				adjH-=20;
 			}
-			else 
-				adjH-=10;
+			else {
+				adjH-=20;
+				adjY+=10;
+			}
 		}
-		// }
 	}
 
 	public void moveleft(){

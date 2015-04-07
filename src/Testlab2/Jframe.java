@@ -30,7 +30,7 @@ public class Jframe implements ActionListener {
 	MainInter i = new MainInter();
 	
 
-	Jframe() {
+	private Jframe() {
 		
 		JMenuBar menuBar = new JMenuBar(); // création de la barre de menu
 		// File Menu, F - Mnemonic
@@ -90,6 +90,12 @@ public class Jframe implements ActionListener {
 		  i.setSize(500,500);	
 	}
 	
+	private static Jframe JframeInstence = new Jframe();
+	
+	public static Jframe getJframeInstance()
+	{	
+		return JframeInstence;
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Open")) {
