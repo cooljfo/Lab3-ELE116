@@ -15,7 +15,7 @@ import java.awt.image.*;
 
 
  class  Panel extends JFrame implements ActionListener{
-	 
+	 static boolean canRedo;
 	 JButton btZoomIn;
 	 JButton undo;
 	 JButton redo;

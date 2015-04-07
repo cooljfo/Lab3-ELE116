@@ -4,11 +4,13 @@ public class MoveLeftCommand implements Command {
 	Zoom zoom;
 	
 	public MoveLeftCommand(Zoom zoom) {
+
 		this.zoom = zoom;
 	}
 
 	@Override
 	public void execute() {
+		Panel.canRedo = false;
 		zoom.moveleft();
 		zoom.repaint();
 		

@@ -6,9 +6,10 @@ public class Invocateur {
 
 	 public void setCommand(Command command)
 	   {
-
+		 
 	       this.command = command;
 	       this.command.execute();
+	       System.out.println(" = " + Panel.canRedo);
 	   }
 	  public void setUndo(Command command){
 		  this.command = command;

@@ -4,11 +4,13 @@ public class MoveRightCommand implements Command {
 	Zoom zoom;
 	
 	public MoveRightCommand(Zoom zoom) {
+
 		this.zoom = zoom;
 	}
 
 	@Override
 	public void execute() {
+		Panel.canRedo = false;
 		zoom.moveright();
 		zoom.repaint();
 

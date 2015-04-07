@@ -4,11 +4,13 @@ public class MoveUpCommand implements Command {
 	Zoom zoom;
 	
 	public MoveUpCommand(Zoom zoom) {
+
 		this.zoom = zoom;
 	}
 
 	@Override
 	public void execute() {
+		Panel.canRedo = false;
 		zoom.moveup();
 		zoom.repaint();
 		

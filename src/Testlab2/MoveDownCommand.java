@@ -6,6 +6,7 @@ public class MoveDownCommand implements Command {
 
 	
 	public MoveDownCommand(Zoom zoom) {
+		
 		this.zoom = zoom;
 		
 
@@ -15,7 +16,7 @@ public class MoveDownCommand implements Command {
 
 	@Override
 	public void execute() {
-
+		Panel.canRedo = false;
 		zoom.movedown();
 		zoom.repaint();
 	
