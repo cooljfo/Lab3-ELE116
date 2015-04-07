@@ -45,21 +45,41 @@ class Zoom extends Canvas implements ImageObserver{
 		//		img=getToolkit().getImage(setPathFile());
 		ds=getToolkit().getScreenSize();
 		try{
-			bi = ImageIO.read(new File(setPathFile()));
-			int type = bi.getType() == 0? BufferedImage.TYPE_INT_ARGB : bi.getType();
+			BufferedImage bibuffer = ImageIO.read(new File(setPathFile()));
+			int type = bibuffer.getType() == 0? BufferedImage.TYPE_INT_ARGB : bibuffer.getType();
 			//	System.out.println(((Zoom.adjX*-1))+" "+((Zoom.adjY*-1))+" "+(Zoom.adjW)+" "+(Zoom.adjH));
+			width=bibuffer.getWidth();
+			height=bibuffer.getHeight();
+
+			bi=bibuffer;
+			if(scalingZoom(width)>100)
+			{
+				bi=bibuffer.getSubimage(0,0,width-1,height);
+				System.out.println("bubu");	
+			}
+
+			if(scalingZoom(height)>100)
+			{
+				bi=bibuffer.getSubimage(0,0,width,height-1);
+				System.out.println("pupu");				
+			}	
+
+
 
 			width=bi.getWidth();
 			height=bi.getHeight();
+			System.out.println("nouveau"+width+" "+height	);
+			
 			zoomX=width/scalingZoom(width);
+
 			zoomY=height/scalingZoom(height);
 			imageCreated=true;
-			System.out.println(width+" "+height	);
+			System.out.println(zoomX+" "+zoomY	);
 		}catch(IOException f){
 			System.out.println(width+height	);
 		}
-	
-		
+
+
 	}
 
 	public void paint(Graphics g){
@@ -183,7 +203,7 @@ class Zoom extends Canvas implements ImageObserver{
 		System.out.println("input="+input);
 		int output = 0;
 		i=0;
-		while (output<95){
+		while (output<100){
 			output=input*i;
 			i++;
 		}
