@@ -5,11 +5,13 @@ public class ZoomOutCommand implements Command {
 	 
     public ZoomOutCommand(Zoom zoom)
     {
+
         this.zoom = zoom;
     }
     
     public void execute()
     {
+    	Panel.canRedo = false;
         zoom.zoomOut();
         zoom.repaint();
     }

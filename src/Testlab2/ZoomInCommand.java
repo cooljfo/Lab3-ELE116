@@ -12,6 +12,7 @@ public class ZoomInCommand implements Command {
 	private List<Integer> previousZoom = new ArrayList<Integer>();
     public ZoomInCommand(Zoom zoom)
     {
+
     	i++;
 		j=i;
 		previousZoom.add(zoom.adjY);
@@ -20,6 +21,7 @@ public class ZoomInCommand implements Command {
     
     public void execute()
     {
+    	Panel.canRedo = false;
         zoom.zoomIn();
         zoom.repaint();
     }

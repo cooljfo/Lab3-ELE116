@@ -17,13 +17,14 @@ public class RedoClass implements Command {
 		i++;
 		j=i;
 		previousZoom.add(this.zoom.getCoord());
+		
 
 	}
 
 	@Override
 	public void redo() {
 		j--;
-		if(j>0)
+		if(j>0 && Panel.canRedo == true )
 			zoom.SetXYWH(previousZoom.get(j));
 		zoom.repaint();
 		
