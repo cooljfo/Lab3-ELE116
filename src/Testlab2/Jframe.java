@@ -23,11 +23,11 @@ import java.io.IOException;
 
 
 
-import Testlab2.MainInter;
+
 
 
 public class Jframe implements ActionListener {
-	MainInter i = new MainInter();
+	Panel i = new Panel();
 	
 
 	private Jframe() {
@@ -100,7 +100,7 @@ public class Jframe implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Open")) {
 			System.out.println("Open");
-		//	MainInter.z=new Zoom();
+		//	Panel.z=new Zoom();
 			i.z.fileChooser();
 			i.setSize(i.z.width+16,i.z.height+98);			
 
@@ -134,15 +134,15 @@ public class Jframe implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("Undo")) {
-			   MainInter.control.setCommand(i.Redo);
-			   MainInter.control.setUndo(i.Undo);
+			   Panel.control.setCommand(i.Redo);
+			   Panel.control.setUndo(i.Undo);
 			
 
 		}
 
 		else if (e.getActionCommand().equals("Redo")) {
-			 MainInter.control.setCommand( i.Undo);
-			 MainInter.control.setRedo(i.Redo);
+			 Panel.control.setCommand( i.Undo);
+			 Panel.control.setRedo(i.Redo);
 		}
 
 
