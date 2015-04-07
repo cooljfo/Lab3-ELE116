@@ -100,6 +100,12 @@ public class Jframe implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Open")) {
 			System.out.println("Open");
+			i.z.zoomX=0;
+			i.z.zoomY=0;
+			i.z.adjX=0;
+			i.z.adjY=0;
+			i.z.adjW=0;
+			i.z.adjH=0;
 		//	Panel.z=new Zoom();
 			i.z.fileChooser();
 			i.setSize(i.z.width+16,i.z.height+98);			
