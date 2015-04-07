@@ -6,35 +6,42 @@ import java.util.List;
 public class UndoCommand implements Command {
 	Zoom zoom;
 	private List<Coordonne> previousZoom = new ArrayList<Coordonne>();
-	int i;
-	int j;
+	int i=1;
+	int j=0 ;
 	public UndoCommand(Zoom zoom) {
 		
 		this.zoom = zoom;
 	}
 	@Override
 	public void execute() {
-		
-//		MainInter.c.SetCoordonne(zoom);
-//		y= MainInter.c;
-		i++;
-		j=i;
 		previousZoom.add(this.zoom.getCoord());
+		i++;
+		j=previousZoom.size();
 		
-
+	
+		
 	}
+			
+
 	@Override
 	public void undo() {
 		Panel.canRedo = true;
 		j--;
-		if(j>0)
-			zoom.SetXYWH(previousZoom.get(j));
+		zoom.SetXYWH(previousZoom.get(j));
+		
 		zoom.repaint();
+		if (j<0)
+			j=0;
 		
 	}
 	@Override
 	public void redo() {
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public int returnValue() {
+		return this.j;
 		
 	}
 

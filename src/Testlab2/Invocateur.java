@@ -20,6 +20,10 @@ public class Invocateur {
 		  this.command = command;
 		  this.command.redo();
 	  }
+	  public int setReturn(Command command){
+		  this.command = command;
+		  return this.command.returnValue();
+	  }
 	   
 	    
 }

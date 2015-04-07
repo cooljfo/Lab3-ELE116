@@ -29,4 +29,13 @@ public class ZoomOutCommand implements Command {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int returnValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
 }

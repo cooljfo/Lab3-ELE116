@@ -29,4 +29,10 @@ public class MoveRightCommand implements Command {
 		
 	}
 
+	@Override
+	public int returnValue() {
+		return 0;
+		
+	}
+
 }

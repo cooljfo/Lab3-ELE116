@@ -38,4 +38,10 @@ public class MoveDownCommand implements Command {
 		
 	}
 
+	@Override
+	public int returnValue() {
+		return 0;
+		
+	}
+
 }

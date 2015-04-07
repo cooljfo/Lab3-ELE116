@@ -30,4 +30,12 @@ public class MoveUpCommand implements Command {
 		
 	}
 
+	@Override
+	public int returnValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
 }

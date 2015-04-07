@@ -1,10 +1,10 @@
 package Testlab2;
 
 public class Coordonne  {
-	 int adjX;
-	 int adjY;
-	 int adjW;
-	 int adjH;
+	 int adjX = 0;
+	 int adjY = 0;
+	 int adjW = 0;
+	 int adjH = 0;
 	public Coordonne(Zoom zoom) {
 		this.adjX = zoom.adjX;
 		this.adjY = zoom.adjY;

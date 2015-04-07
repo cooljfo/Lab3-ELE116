@@ -6,17 +6,20 @@ import java.util.List;
 public class RedoClass implements Command {
 	Zoom zoom;
 	private List<Coordonne> previousZoom = new ArrayList<Coordonne>();
-	int i;
-	int j;
+	int i=0;
+	int j=0;
 	public RedoClass(Zoom zoom) {
 		this.zoom = zoom;
 	}
 
 	@Override
 	public void execute() {
-		i++;
-		j=i;
+	
 		previousZoom.add(this.zoom.getCoord());
+		i++;
+		j=previousZoom.size();
+		
+		
 		
 
 	}
@@ -24,16 +27,22 @@ public class RedoClass implements Command {
 	@Override
 	public void redo() {
 		j--;
-		if(j>0 && Panel.canRedo == true )
-			zoom.SetXYWH(previousZoom.get(j));
+	    zoom.SetXYWH(previousZoom.get(j));
 		zoom.repaint();
-		
+		if (j<0)
+			j=0;
 
 	}
 
 	@Override
 	public void undo() {
 	
+	}
+
+	@Override
+	public int returnValue() {
+		return this.j;
+		
 	}
 
 }

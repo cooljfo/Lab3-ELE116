@@ -30,4 +30,10 @@ public class MoveLeftCommand implements Command {
 		
 	}
 
+	@Override
+	public int returnValue() {
+		return 0;// TODO Auto-generated method stub
+		
+	}
+
 }

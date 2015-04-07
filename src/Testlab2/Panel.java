@@ -5,12 +5,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import javax.swing.JFrame;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-
 import java.awt.image.*;
 
 
@@ -80,42 +74,51 @@ import java.awt.image.*;
 		
 	   if(e.getSource()==btZoomIn)
 	    {
-		   	control.setCommand(Undo);
+		    control.setCommand(Undo);
 		    control.setCommand(ZoomIn);
+		    
+			System.out.println("caca = " + control.setReturn(Redo) + control.setReturn(Undo) );
 	    }
 	   else if(e.getSource()==btZoomOut)
 	    {
 		   control.setCommand(Undo);
 		   control.setCommand(ZoomOut);
+		   
 	    }
 	   else if(e.getSource()==btMoveUp)
 	    {
 		   control.setCommand(Undo);
 		   control.setCommand(MoveUp);
+		   
 	    }
 	   else if(e.getSource()==btMoveDown)
 	    {
 		   control.setCommand(Undo);
 		   control.setCommand(MoveDown);
+		   
 	    }
 	   else if(e.getSource()==btMoveLeft)
 	    {
 		   control.setCommand(Undo);
 		   control.setCommand(MoveLeft);
+		   
 	    }
 	   else if(e.getSource()==btMoveRight)
 	    {
 		   control.setCommand(Undo);
 		   control.setCommand(MoveRight);
+		   
 	    }
-	   else if(e.getSource()==undo)
+	   else if(e.getSource()==undo && control.setReturn(Undo)!=0  )
 	    {
+		   System.out.println("caca = " + control.setReturn(Redo) + control.setReturn(Undo) );
 		   control.setCommand(Redo);
 		   control.setUndo(Undo);
 
 	    }
-	   else if(e.getSource()==redo)
+	   else if(e.getSource()==redo && Panel.canRedo == true && control.setReturn(Redo)!=0 )
 	    {
+		   System.out.println("caca = " + control.setReturn(Redo) + control.setReturn(Undo) );
 		   control.setCommand(Undo);
 		   control.setRedo(Redo);
 		   
