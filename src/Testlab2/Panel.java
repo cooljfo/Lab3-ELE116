@@ -74,39 +74,49 @@ import java.awt.image.*;
 		
 	   if(e.getSource()==btZoomIn)
 	    {
+		   if(z.iw-z.zoomX>=15&&z.ih-z.zoomY>=15){
 		    control.setCommand(Undo);
 		    control.setCommand(ZoomIn);
+		   }
 		    
 			System.out.println("caca = " + control.setReturn(Redo) + control.setReturn(Undo) );
 	    }
 	   else if(e.getSource()==btZoomOut)
 	    {
+		if((z.iw-z.adjX < z.width )||(z.ih-z.adjY < z.height ||(0 > z.adjX)||(0 > z.adjY))){
 		   control.setCommand(Undo);
 		   control.setCommand(ZoomOut);
-		   
+		}
 	    }
 	   else if(e.getSource()==btMoveUp)
 	    {
+		   if((0 >z.adjY)){
 		   control.setCommand(Undo);
 		   control.setCommand(MoveUp);
-		   
+			}
 	    }
 	   else if(e.getSource()==btMoveDown)
 	    {
+		   if((z.ih-z.adjY < z.height )){
 		   control.setCommand(Undo);
 		   control.setCommand(MoveDown);
+	    }
 		   
 	    }
 	   else if(e.getSource()==btMoveLeft)
 	    {
+			if((0 > z.adjX)){
 		   control.setCommand(Undo);
 		   control.setCommand(MoveLeft);
+			}
 		   
 	    }
 	   else if(e.getSource()==btMoveRight)
 	    {
+		   if((z.iw-z.adjX < z.width )){
 		   control.setCommand(Undo);
 		   control.setCommand(MoveRight);
+		   }
 		   
 	    }
 	   else if(e.getSource()==undo && control.setReturn(Undo)!=0  )
