@@ -22,6 +22,8 @@ class Zoom extends Canvas implements ImageObserver{
 	public static    int ih;
 	int x;
 	int y;
+	int zoomX;
+	int zoomY;
 	public static int adjX=0;
 	public static int adjY=0;
 	public static int adjW=0;
@@ -49,6 +51,8 @@ class Zoom extends Canvas implements ImageObserver{
 
 			width=bi.getWidth();
 			height=bi.getHeight();
+			zoomX=width/scalingZoom(width);
+			zoomY=height/scalingZoom(height);
 			imageCreated=true;
 			System.out.println(width+" "+height	);
 		}catch(IOException f){
@@ -93,10 +97,10 @@ class Zoom extends Canvas implements ImageObserver{
 
 
 	public void zoomIn(){
-		adjX-=10;
-		adjY-=10;
-		adjW+=20;
-		adjH+=20;
+		adjX-=zoomX;
+		adjY-=zoomY;
+		adjW+=zoomX*2;
+		adjH+=zoomY*2;
 	}
 
 	public void zoomOut(){
@@ -105,22 +109,22 @@ class Zoom extends Canvas implements ImageObserver{
 		if((iw-adjX < width )||(ih-adjY < height ||(0 > adjX)||(0 > adjY))){
 			System.out.println("allo");
 			if((0 > adjX) )
-				adjX+=10;
+				adjX+=zoomX;
 			if(0 > adjY)
-				adjY+=10;
-			if(iw-adjX+10 < width ){
-				adjW-=20;
+				adjY+=zoomY;
+			if(iw-adjX+zoomX < width ){
+				adjW-=zoomX*2;
 			}
 			else{ 
-				adjW-=20;
-				adjX+=10;
+				adjW-=zoomX*2;
+				adjX+=zoomX;
 			}
-			if(ih-adjY+10 < height ){
-				adjH-=20;
+			if(ih-adjY+zoomY < height ){
+				adjH-=zoomY*2;
 			}
 			else {
-				adjH-=20;
-				adjY+=10;
+				adjH-=zoomY*2;
+				adjY+=zoomY;
 			}
 		}
 	}
@@ -128,14 +132,14 @@ class Zoom extends Canvas implements ImageObserver{
 	public void moveleft(){
 		//  if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
 		if((0 > adjX))
-			adjX+=10;
+			adjX+=zoomX;
 
 		//  }
 	}
 	public void moveright(){
 
 		if((iw-adjX < width ))
-			adjX-=10;
+			adjX-=zoomX;
 
 		//  }
 	}
@@ -146,7 +150,7 @@ class Zoom extends Canvas implements ImageObserver{
 
 		if((0 > adjY))
 
-			adjY+=10;
+			adjY+=zoomY;
 
 
 		//  }
@@ -157,7 +161,7 @@ class Zoom extends Canvas implements ImageObserver{
 		// if(x<(int)ds.getWidth()/2-bi.getWidth(this)/2){
 		System.out.println((ih+adjY)+" < "+height);
 		if((ih-adjY < height ))
-			adjY-=10;
+			adjY-=zoomY;
 		//  }
 	}
 	public void SetXYWH(Coordonne coordonne){
@@ -169,6 +173,23 @@ class Zoom extends Canvas implements ImageObserver{
 	public Coordonne getCoord(){
 		return new Coordonne(this);
 	}
-
+	
+	private static int scalingZoom(int input){
+		int i=input-1;
+		while (input%i != 0){
+			i--;
+		}
+		input= input/ i;
+		System.out.println("input="+input);
+		int output = 0;
+		i=0;
+		while (output<95){
+			output=input*i;
+			i++;
+		}
+		System.out.println("output="+output);
+		return output;
+	
+	}
 
 }
