@@ -114,39 +114,22 @@ public class Jframe implements ActionListener {
 			i.z.adjY=0;
 			i.z.adjW=0;
 			i.z.adjH=0;
-
-			i.z.fileChooser();
-			i.setSize(i.z.width+16,i.z.height+98);	
 			Panel.canUndo = false;
 			UndoCommand.previousZoom.removeAll(UndoCommand.previousZoom);
 			Panel.canRedo = false;
 			RedoCommand.previousZoom.removeAll(RedoCommand.previousZoom);
+
+			i.z.fileChooser();
+			i.setSize(i.z.width+16,i.z.height+98);	
+
 
 		}
 
 		else if (e.getActionCommand().equals("Save")) {
 			System.out.println("Save");
 
+			i.z.save();
 
-			try{
-
-				BufferedImage originalImage = ImageIO.read(new File(i.z.pathfile));
-				int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
-				BufferedImage out = originalImage.getSubimage(i.z.adjX*-1, i.z.adjY*-1,i.z.width-i.z.adjW,i.z.height-i.z.adjH);// i.z.adjW-2*i.z.adjX*-1, i.z.adjH-2*i.z.adjY*-1);
-
-				Frame yourJFrame = null; //
-				FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.SAVE); // on crée une nouvelle fenêtre pour choisir le fichier
-				fd.setDirectory("C:\\");
-				fd.setFile("Image.jpg");
-				fd.setVisible(true);
-				String pathfile = fd.getDirectory() + fd.getFile();
-
-				ImageIO.write(out, "jpg", new File(pathfile));
-
-			}
-			catch(IOException f){
-				System.out.println("erreur");
-			}
 		}
 
 		if (e.getActionCommand().equals("Undo" )&& Panel.canUndo == true && i.control.setReturn(i.Undo)!=0) {

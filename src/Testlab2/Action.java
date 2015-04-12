@@ -69,7 +69,27 @@ class Action extends Canvas implements ImageObserver{
 
 	}
 
+    public void save(){
+		try{
 
+			BufferedImage originalImage = ImageIO.read(new File(pathfile));
+			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+			BufferedImage out = originalImage.getSubimage(adjX*-1, adjY*-1,width-adjW,height-adjH);// i.z.adjW-2*i.z.adjX*-1, i.z.adjH-2*i.z.adjY*-1);
+
+			Frame yourJFrame = null; //
+			FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.SAVE); // on crée une nouvelle fenêtre pour choisir le fichier
+			fd.setDirectory("C:\\");
+			fd.setFile("Image.jpg");
+			fd.setVisible(true);
+			String pathfile = fd.getDirectory() + fd.getFile();
+
+			ImageIO.write(out, "jpg", new File(pathfile));
+
+		}
+		catch(IOException f){
+			System.out.println("erreur");
+		}
+    }
 
 
 	public String setPathFile(){
