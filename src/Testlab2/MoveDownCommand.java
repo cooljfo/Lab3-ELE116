@@ -2,24 +2,25 @@ package Testlab2;
 
 
 public class MoveDownCommand implements Command {
-	Zoom zoom;
+	Action zoom;
 
-	
-	public MoveDownCommand(Zoom zoom) {
-		
+
+	public MoveDownCommand(Action zoom) {
+
 		this.zoom = zoom;
-		
 
-		
-		
+
+
+
 	}
 
 	@Override
 	public void execute() {
 		Panel.canRedo = false;
+		Panel.canUndo = true;
 		zoom.movedown();
 		zoom.repaint();
-	
+
 	}
 
 
@@ -28,20 +29,20 @@ public class MoveDownCommand implements Command {
 	public void undo() {
 
 		zoom.repaint();
-		
-	
+
+
 	}
 
 	@Override
 	public void redo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public int returnValue() {
 		return 0;
-		
+
 	}
 
 }

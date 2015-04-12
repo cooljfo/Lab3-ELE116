@@ -1,9 +1,9 @@
 package Testlab2;
 
 public class MoveUpCommand implements Command {
-	Zoom zoom;
-	
-	public MoveUpCommand(Zoom zoom) {
+	Action zoom;
+
+	public MoveUpCommand(Action zoom) {
 
 		this.zoom = zoom;
 	}
@@ -11,9 +11,10 @@ public class MoveUpCommand implements Command {
 	@Override
 	public void execute() {
 		Panel.canRedo = false;
+		Panel.canUndo = true;
 		zoom.moveup();
 		zoom.repaint();
-		
+
 	}
 
 
@@ -21,13 +22,13 @@ public class MoveUpCommand implements Command {
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void redo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

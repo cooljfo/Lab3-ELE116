@@ -1,33 +1,34 @@
 package Testlab2;
 
 public class ZoomOutCommand implements Command {
-	Zoom zoom;
-	 
-    public ZoomOutCommand(Zoom zoom)
-    {
+	Action zoom;
 
-        this.zoom = zoom;
-    }
-    
-    public void execute()
-    {
-    	Panel.canRedo = false;
-        zoom.zoomOut();
-        zoom.repaint();
-    }
+	public ZoomOutCommand(Action zoom)
+	{
+
+		this.zoom = zoom;
+	}
+
+	public void execute()
+	{
+		Panel.canRedo = false;
+		Panel.canUndo = true;
+		zoom.zoomOut();
+		zoom.repaint();
+	}
 
 
 
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void redo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

@@ -1,9 +1,9 @@
 package Testlab2;
 
 public class MoveRightCommand implements Command {
-	Zoom zoom;
-	
-	public MoveRightCommand(Zoom zoom) {
+	Action zoom;
+
+	public MoveRightCommand(Action zoom) {
 
 		this.zoom = zoom;
 	}
@@ -11,6 +11,7 @@ public class MoveRightCommand implements Command {
 	@Override
 	public void execute() {
 		Panel.canRedo = false;
+		Panel.canUndo = true;
 		zoom.moveright();
 		zoom.repaint();
 
@@ -20,19 +21,19 @@ public class MoveRightCommand implements Command {
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void redo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public int returnValue() {
 		return 0;
-		
+
 	}
 
 }
