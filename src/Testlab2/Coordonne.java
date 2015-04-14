@@ -1,5 +1,5 @@
 package Testlab2;
-
+// Class permettant de storer l'état d'un image sous forme de coordonnées
 public class Coordonne  {
 	int adjX = 0;
 	int adjY = 0;

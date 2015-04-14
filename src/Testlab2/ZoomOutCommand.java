@@ -5,13 +5,13 @@ public class ZoomOutCommand implements Command {
 
 	public ZoomOutCommand(Action zoom)
 	{
-
+		// On copie l'image dans la commande pour pouvoir effectuer les manipulatons
 		this.zoom = zoom;
 	}
 
 	public void execute()
 	{
-
+		//Manipulation selon la commande lorsqu'on a appuyer sur la touche dans le Panel
 		zoom.zoomOut();
 		zoom.repaint();
 	}

@@ -4,13 +4,13 @@ public class MoveRightCommand implements Command {
 	Action zoom;
 
 	public MoveRightCommand(Action zoom) {
-
+		// On copie l'image dans la commande pour pouvoir effectuer les manipulatons
 		this.zoom = zoom;
 	}
 
 	@Override
 	public void execute() {
-
+		//Manipulation selon la commande lorsqu'on a appuyer sur la touche dans le Panel
 		zoom.moveright();
 		zoom.repaint();
 

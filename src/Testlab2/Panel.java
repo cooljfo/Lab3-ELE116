@@ -74,7 +74,7 @@ class  Panel extends JFrame implements ActionListener{
 		setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
 		setVisible(true);
 	}
-
+// Signal permettant de savoir quelle bouton est actionné
 	public void actionPerformed(ActionEvent e){
 
 		if(e.getSource()==btZoomIn)
@@ -127,14 +127,14 @@ class  Panel extends JFrame implements ActionListener{
 		else if(e.getSource()==undo)
 		{
 			System.out.println(control.setReturn(Undo) );
-			//control.setCommand(Redo);
+
 			control.setUndo(Undo);
 
 		}
 		else if(e.getSource()==redo )
 		{
 			System.out.println( control.setReturn(Undo) );
-			//control.setCommand(Undo);
+
 			control.setRedo(Undo);
 
 

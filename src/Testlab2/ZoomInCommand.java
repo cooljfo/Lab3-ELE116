@@ -7,21 +7,17 @@ import java.util.List;
 
 public class ZoomInCommand implements Command {
 	Action zoom;
-	int i;
-	int j;
-	private List<Integer> previousZoom = new ArrayList<Integer>();
+
 	public ZoomInCommand(Action zoom)
 	{
-
-		i++;
-		j=i;
-		previousZoom.add(zoom.adjY);
+		// On copie l'image dans la commande pour pouvoir effectuer les manipulatons
+	
 		this.zoom = zoom;
 	}
 
 	public void execute()
 	{
-
+		//Manipulation selon la commande lorsqu'on a appuyer sur la touche dans le Panel
 		zoom.zoomIn();
 		zoom.repaint();
 	}

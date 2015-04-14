@@ -1,5 +1,5 @@
 package Testlab2;
-
+// Interface pour chaque commande de l'application
 public interface Command {
 
 	public void execute();
