@@ -26,8 +26,8 @@ public class RedoCommand implements Command {
 
 	@Override
 	public void redo() {
-		if(j!=1)
-		previousZoom.add(this.zoom.getCoord());
+		
+
 		j--;
 		zoom.SetXYWH(previousZoom.get(j));
 		zoom.repaint();

@@ -10,7 +10,9 @@ import java.awt.image.*;
 
 class  Panel extends JFrame implements ActionListener{
 	static boolean canRedo;
-	static boolean canUndo = false;	 
+	static boolean canUndo = false;	
+	static boolean canRedo1;
+	static boolean canUndo1 = false;	 
 
 	JButton undo;
 	JButton redo;
@@ -123,18 +125,18 @@ class  Panel extends JFrame implements ActionListener{
 			}
 
 		}
-		else if(e.getSource()==undo && Panel.canUndo == true && control.setReturn(Undo)!=0  )
+		else if(e.getSource()==undo && Panel.canUndo == true )
 		{
 			System.out.println("caca = " + control.setReturn(Redo) +"   " + control.setReturn(Undo) );
-			control.setCommand(Redo);
+			//control.setCommand(Redo);
 			control.setUndo(Undo);
 
 		}
-		else if(e.getSource()==redo &&  Panel.canRedo == true && control.setReturn(Redo)!=0 )
+		else if(e.getSource()==redo )
 		{
 			System.out.println("caca = " + control.setReturn(Redo) +"   " + control.setReturn(Undo) );
-			control.setCommand(Undo);
-			control.setRedo(Redo);
+			//control.setCommand(Undo);
+			control.setRedo(Undo);
 
 
 

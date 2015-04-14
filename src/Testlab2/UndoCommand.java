@@ -25,25 +25,27 @@ public class UndoCommand implements Command {
 
 	@Override
 	public void undo() {
-		if(j!=1)
-		previousZoom.add(this.zoom.getCoord());
+		
 		Panel.canRedo = true;
+		
 		j--;
 		zoom.SetXYWH(previousZoom.get(j));
 
 		zoom.repaint();
 		if (j==0){
 			j=1;
-			previousZoom.removeAll(previousZoom);
+			//previousZoom.removeAll(previousZoom);
 		}
 		
 
 	}
 	@Override
 	public void redo() {
-		
-		zoom.SetXYWH(previousZoom.get(j));
 		j++;
+		if(j>previousZoom.size())
+			j =previousZoom.size();
+		zoom.SetXYWH(previousZoom.get(j));
+		zoom.repaint();
 
 	}
 	@Override
