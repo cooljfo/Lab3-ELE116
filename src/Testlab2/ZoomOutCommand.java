@@ -11,9 +11,7 @@ public class ZoomOutCommand implements Command {
 
 	public void execute()
 	{
-		Panel.canRedo = false;
 
-		Panel.canUndo = true;
 		zoom.zoomOut();
 		zoom.repaint();
 	}

@@ -9,11 +9,8 @@ import java.awt.image.*;
 
 
 class  Panel extends JFrame implements ActionListener{
-	static boolean canRedo;
-	static boolean canUndo = false;	
-	static boolean canRedo1;
-	static boolean canUndo1 = false;	 
-
+	
+	//on crée tout les boutons du JFRAME
 	JButton undo;
 	JButton redo;
 	JButton btZoomIn;
@@ -23,8 +20,9 @@ class  Panel extends JFrame implements ActionListener{
 	JButton btMoveLeft;
 	JButton btMoveRight;
 	JPanel panel;
-	public Action z = new Action();
-	static Invocateur control = new Invocateur();
+	public Action z = new Action();// On crée une nouvelle instence d'action
+	static Invocateur control = new Invocateur(); // On crée un nouvel invocateur de command
+	// on crée une nouvelle instance de chaque commande
 	Command ZoomIn = new ZoomInCommand(z);
 	Command ZoomOut = new ZoomOutCommand(z);
 	Command MoveUp = new MoveUpCommand(z);
@@ -39,7 +37,7 @@ class  Panel extends JFrame implements ActionListener{
 		setTitle("Image zoom");
 
 
-
+		//On édite chaque boutons et on les ajoute au action listener
 		btZoomIn=new JButton("+");
 		btZoomIn.addActionListener(this);
 		btZoomOut=new JButton("-");
@@ -61,7 +59,8 @@ class  Panel extends JFrame implements ActionListener{
 		panel=new JPanel();
 
 		panel.setLayout(new FlowLayout());
-
+		
+		//on ajoute chaque boutons au panel
 		panel.add(undo);
 		panel.add(redo);
 		panel.add(btZoomIn);
@@ -80,7 +79,7 @@ class  Panel extends JFrame implements ActionListener{
 
 		if(e.getSource()==btZoomIn)
 		{
-			if(z.iw-z.zoomX>=15&&z.ih-z.zoomY>=15){
+			if(z.iw-z.zoomX>=15&&z.ih-z.zoomY>=15){	// Si on n'est pas au zoom maximum
 				control.setCommand(Undo);
 				control.setCommand(ZoomIn);
 			}
@@ -89,21 +88,21 @@ class  Panel extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==btZoomOut)
 		{
-			if((z.iw-z.adjX < z.width )||(z.ih-z.adjY < z.height ||(0 > z.adjX)||(0 > z.adjY))){
+			if((z.iw-z.adjX < z.width )||(z.ih-z.adjY < z.height ||(0 > z.adjX)||(0 > z.adjY))){// Si on n'est pas au zoomout maximum
 				control.setCommand(Undo);
 				control.setCommand(ZoomOut);
 			}
 		}
 		else if(e.getSource()==btMoveUp)
 		{
-			if((0 >z.adjY)){
+			if((0 >z.adjY)){ // Si on n'est pas complètement en haut de limage
 				control.setCommand(Undo);
 				control.setCommand(MoveUp);
 			}
 		}
 		else if(e.getSource()==btMoveDown)
 		{
-			if((z.ih-z.adjY < z.height )){
+			if((z.ih-z.adjY < z.height )){// Si on n'est pas complètement en bas de limage
 				control.setCommand(Undo);
 				control.setCommand(MoveDown);
 			}
@@ -111,7 +110,7 @@ class  Panel extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==btMoveLeft)
 		{
-			if((0 > z.adjX)){
+			if((0 > z.adjX)){// Si on n'est pas complètement à gauche de limage
 				control.setCommand(Undo);
 				control.setCommand(MoveLeft);
 			}
@@ -119,13 +118,13 @@ class  Panel extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==btMoveRight)
 		{
-			if((z.iw-z.adjX < z.width )){
+			if((z.iw-z.adjX < z.width )){// Si on n'est pas complètement à droite de limage
 				control.setCommand(Undo);
 				control.setCommand(MoveRight);
 			}
 
 		}
-		else if(e.getSource()==undo && Panel.canUndo == true )
+		else if(e.getSource()==undo)
 		{
 			System.out.println(control.setReturn(Undo) );
 			//control.setCommand(Redo);

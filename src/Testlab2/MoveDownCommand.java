@@ -16,9 +16,7 @@ public class MoveDownCommand implements Command {
 
 	@Override
 	public void execute() {
-		Panel.canRedo = false;
-
-		Panel.canUndo = true;
+	
 		zoom.movedown();
 		zoom.repaint();
 

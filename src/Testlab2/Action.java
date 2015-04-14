@@ -38,29 +38,29 @@ class Action extends Canvas implements ImageObserver{
 	public void fileChooser(){
 
 		try{
-			BufferedImage bibuffer = ImageIO.read(new File(setPathFile()));
+			BufferedImage bibuffer = ImageIO.read(new File(setPathFile())); // on envoie l'image recu dans une bufferimage
 			int type = bibuffer.getType() == 0? BufferedImage.TYPE_INT_ARGB : bibuffer.getType();
 
-			width=bibuffer.getWidth();
-			height=bibuffer.getHeight();
+			width=bibuffer.getWidth(); // on récupère la largeur de l'image
+			height=bibuffer.getHeight();// on récupère la hauteur de l'image
 
-			bi=bibuffer;
-			if(scalingZoom(width)>100)
+			bi=bibuffer; // l'image est enregistre dans une variable global
+			if(scalingZoom(width)>100) // si la largeur est un nombre premier
 			{
-				bi=bibuffer.getSubimage(0,0,width-1,height);	
+				bi=bibuffer.getSubimage(0,0,width-1,height); // on enlève une colone de pixel à l'image
 			}
 
-			if(scalingZoom(height)>100)
+			if(scalingZoom(height)>100) // si la hauteur est un nombre premier
 			{
-				bi=bibuffer.getSubimage(0,0,width,height-1);			
+				bi=bibuffer.getSubimage(0,0,width,height-1); // on enlève une rangée de pixel à l'image			
 			}	
 
-			width=bi.getWidth();
-			height=bi.getHeight();
+			width=bi.getWidth();// on récupère la nouvelle largeur de l'image
+			height=bi.getHeight();// on récupère la nouvelle hauteur de l'image
 
-			zoomX=width/scalingZoom(width);
+			zoomX=width/scalingZoom(width); // on choisit l'incrément du déplacement de l'axe des X
 
-			zoomY=height/scalingZoom(height);
+			zoomY=height/scalingZoom(height);// on choisit l'incrément du déplacement de l'axe des Y
 			imageCreated=true;
 		}catch(IOException f){
 			System.out.println(width+height	);
@@ -69,12 +69,12 @@ class Action extends Canvas implements ImageObserver{
 
 	}
 
-    public void save(){
+    public void save(){// méthode pour enregistrer l'image
 		try{
 
 			BufferedImage originalImage = ImageIO.read(new File(pathfile));
 			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
-			BufferedImage out = originalImage.getSubimage(adjX*-1, adjY*-1,width-adjW,height-adjH);// i.z.adjW-2*i.z.adjX*-1, i.z.adjH-2*i.z.adjY*-1);
+			BufferedImage out = originalImage.getSubimage(adjX*-1, adjY*-1,width-adjW,height-adjH);
 
 			Frame yourJFrame = null; //
 			FileDialog fd = new FileDialog(yourJFrame, "Choose a file",FileDialog.SAVE); // on crée une nouvelle fenêtre pour choisir le fichier
@@ -107,22 +107,21 @@ class Action extends Canvas implements ImageObserver{
 	}
 
 	public void paint(Graphics g){
-		if (imageCreated){
+		if (imageCreated){ // si l'image est créé
 			Graphics2D g2d=(Graphics2D)g;
 
-			BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,width-adjW,height-adjH);
+			BufferedImage bibackup = bi.getSubimage(adjX*-1, adjY*-1,width-adjW,height-adjH); // on crée la nouvelle image avec les nouvelles coordonnées
 
-			iw=bibackup.getWidth();
+			iw=bibackup.getWidth(); // on enregistre les nouvelles dimentions de l'image
 			ih=bibackup.getHeight();
 
-			g2d.drawImage(bibackup,0,0,width,height,null);
+			g2d.drawImage(bibackup,0,0,width,height,null); // on affiche la nouvelle image
 		}
 
 	}
 
 	public void zoomIn(){
 
-		System.out.println((ih-zoomY));
 		adjX-=zoomX;
 		adjY-=zoomY;
 		adjW+=zoomX*2;
@@ -130,7 +129,7 @@ class Action extends Canvas implements ImageObserver{
 
 	}
 
-	public void zoomOut(){
+	public void zoomOut(){ // on réagrandie l'image et si on arrive au bout de l'image on la redécale dans le sens oposé
 
 		if((0 > adjX) )
 			adjX+=zoomX;
@@ -167,7 +166,7 @@ class Action extends Canvas implements ImageObserver{
 		adjY-=zoomY;
 	}
 	
-	public void SetXYWH(Coordonne coordonne){
+	public void SetXYWH(Coordonne coordonne){ 
 		adjY = coordonne.adjY;
 		adjX = coordonne.adjX;
 		adjH = coordonne.adjH;
@@ -178,7 +177,7 @@ class Action extends Canvas implements ImageObserver{
 		return new Coordonne(this);
 	}
 
-	private static int scalingZoom(int input){
+	private static int scalingZoom(int input){ // méthode pour trouver l'incrément de déplacement de l'image sur les axes
 		int i=input-1;
 		while (input%i != 0){
 			i--;

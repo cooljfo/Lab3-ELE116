@@ -10,9 +10,7 @@ public class MoveLeftCommand implements Command {
 
 	@Override
 	public void execute() {
-		Panel.canRedo = false;
 
-		Panel.canUndo = true;
 		zoom.moveleft();
 		zoom.repaint();
 

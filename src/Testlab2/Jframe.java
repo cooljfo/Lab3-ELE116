@@ -114,9 +114,9 @@ public class Jframe implements ActionListener {
 			i.z.adjY=0;
 			i.z.adjW=0;
 			i.z.adjH=0;
-			Panel.canUndo = false;
+
 			MomentoCommand.previousZoom.removeAll(MomentoCommand.previousZoom);
-			Panel.canRedo = false;
+
 
 
 			i.z.fileChooser();
@@ -132,7 +132,7 @@ public class Jframe implements ActionListener {
 
 		}
 
-		if (e.getActionCommand().equals("Undo" )&& Panel.canUndo == true ) {
+		if (e.getActionCommand().equals("Undo" ) ) {
 
 			Panel.control.setUndo(i.Undo);
 

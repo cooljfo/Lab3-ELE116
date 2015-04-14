@@ -10,9 +10,7 @@ public class MoveUpCommand implements Command {
 
 	@Override
 	public void execute() {
-		Panel.canRedo = false;
 
-		Panel.canUndo = true;
 		zoom.moveup();
 		zoom.repaint();
 

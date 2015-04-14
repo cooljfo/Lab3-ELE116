@@ -21,7 +21,7 @@ public class ZoomInCommand implements Command {
 
 	public void execute()
 	{
-		Panel.canUndo = true;
+
 		zoom.zoomIn();
 		zoom.repaint();
 	}
