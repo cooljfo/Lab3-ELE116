@@ -31,8 +31,8 @@ class  Panel extends JFrame implements ActionListener{
 	Command MoveDown = new MoveDownCommand(z);
 	Command MoveLeft = new MoveLeftCommand(z);
 	Command MoveRight = new MoveRightCommand(z);
-	Command Undo = new UndoCommand(z);
-	Command Redo = new RedoCommand(z);
+	Command Undo = new MomentoCommand(z);
+
 	Coordonne c = new Coordonne(z);
 
 	Panel(){
@@ -85,7 +85,7 @@ class  Panel extends JFrame implements ActionListener{
 				control.setCommand(ZoomIn);
 			}
 
-			System.out.println("caca = " + control.setReturn(Redo) + control.setReturn(Undo) );
+
 		}
 		else if(e.getSource()==btZoomOut)
 		{
@@ -127,14 +127,14 @@ class  Panel extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==undo && Panel.canUndo == true )
 		{
-			System.out.println("caca = " + control.setReturn(Redo) +"   " + control.setReturn(Undo) );
+			System.out.println(control.setReturn(Undo) );
 			//control.setCommand(Redo);
 			control.setUndo(Undo);
 
 		}
 		else if(e.getSource()==redo )
 		{
-			System.out.println("caca = " + control.setReturn(Redo) +"   " + control.setReturn(Undo) );
+			System.out.println( control.setReturn(Undo) );
 			//control.setCommand(Undo);
 			control.setRedo(Undo);
 

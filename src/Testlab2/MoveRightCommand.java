@@ -11,7 +11,7 @@ public class MoveRightCommand implements Command {
 	@Override
 	public void execute() {
 		Panel.canRedo = false;
-		RedoCommand.previousZoom.removeAll(RedoCommand.previousZoom);
+
 		Panel.canUndo = true;
 		zoom.moveright();
 		zoom.repaint();

@@ -22,8 +22,8 @@ public class ZoomInCommand implements Command {
 	public void execute()
 	{
 		Panel.canRedo = false;
-		UndoCommand.previousZoom.subList(UndoCommand.j, UndoCommand.previousZoom.size());
-		RedoCommand.previousZoom.removeAll(RedoCommand.previousZoom);
+		MomentoCommand.previousZoom.subList(MomentoCommand.j, MomentoCommand.previousZoom.size());
+
 		Panel.canUndo = true;
 		zoom.zoomIn();
 		zoom.repaint();
