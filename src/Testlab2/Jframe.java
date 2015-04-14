@@ -35,7 +35,7 @@ import java.io.IOException;
 
 
 public class Jframe implements ActionListener {
-	Panel i = new Panel();
+	Panel i = new Panel(); // on crée une nouvelle instance de panel
 
 
 	private Jframe() {
@@ -95,19 +95,22 @@ public class Jframe implements ActionListener {
 
 
 		i.setJMenuBar(menuBar);
-		i.setSize(500,500);	
+		i.setSize(500,500);	// on set la grosseur par défaut du frame
 	}
 
+	/////////// implementation du singleton///////////
 	private static Jframe JframeInstence = new Jframe();
 
 	public static Jframe getJframeInstance()
 	{	
 		return JframeInstence;
 	}
+	
+	/////////////////////////////////////////////////
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Open")) {
-
+			///////// si on ouvre une nouvelle image on réintialise toutes la valeurs//////////
 			i.z.zoomX=0;
 			i.z.zoomY=0;
 			i.z.adjX=0;
@@ -116,11 +119,11 @@ public class Jframe implements ActionListener {
 			i.z.adjH=0;
 
 			MomentoCommand.previousZoom.removeAll(MomentoCommand.previousZoom);
-
+			/////////////////////////////////////////////////////////////
 
 
 			i.z.fileChooser();
-			i.setSize(i.z.width+16,i.z.height+98);	
+			i.setSize(i.z.width+16,i.z.height+98);	// on ajuste le frame à la grosseur de l'image
 
 
 		}
@@ -128,19 +131,19 @@ public class Jframe implements ActionListener {
 		else if (e.getActionCommand().equals("Save")) {
 			System.out.println("Save");
 
-			i.z.save();
+			i.z.save();// on enregistre l'Image
 
 		}
 
 		if (e.getActionCommand().equals("Undo" ) ) {
 
-			Panel.control.setUndo(i.Undo);
+			Panel.control.setUndo(i.Undo); 
 
 
 		}
 
 		else if (e.getActionCommand().equals("Redo")) {
-			Panel.control.setCommand( i.Undo);
+			Panel.control.setRedo(i.Undo);
 
 		}
 
