@@ -14,6 +14,7 @@ public class UndoCommand implements Command {
 	}
 	@Override
 	public void execute() {
+		previousZoom.subList(j,previousZoom.size()).clear();
 		previousZoom.add(this.zoom.getCoord());
 		i++;
 		j=previousZoom.size();

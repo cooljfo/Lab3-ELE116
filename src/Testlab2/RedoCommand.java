@@ -1,5 +1,4 @@
 package Testlab2;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,8 @@ public class RedoCommand implements Command {
 
 	@Override
 	public void execute() {
-
+		
+		
 		previousZoom.add(this.zoom.getCoord());
 		i++;
 		j=previousZoom.size();
