@@ -125,14 +125,14 @@ class  Panel extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==undo && Panel.canUndo == true && control.setReturn(Undo)!=0  )
 		{
-			System.out.println("caca = " + control.setReturn(Redo) + control.setReturn(Undo) );
+			System.out.println("caca = " + control.setReturn(Redo) +"   " + control.setReturn(Undo) );
 			control.setCommand(Redo);
 			control.setUndo(Undo);
 
 		}
 		else if(e.getSource()==redo &&  Panel.canRedo == true && control.setReturn(Redo)!=0 )
 		{
-			System.out.println("caca = " + control.setReturn(Redo) + control.setReturn(Undo) );
+			System.out.println("caca = " + control.setReturn(Redo) +"   " + control.setReturn(Undo) );
 			control.setCommand(Undo);
 			control.setRedo(Redo);
 
